@@ -17,8 +17,7 @@ CREATE TABLE dispute (
 );
 
 CREATE TABLE entity (
-    id INTEGER PRIMARY KEY,
-    is_supplier BOOLEAN NOT NULL
+    id INTEGER PRIMARY KEY
 );
 CREATE TABLE supplier (
     id INTEGER PRIMARY KEY,

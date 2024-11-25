@@ -28,7 +28,6 @@ class DatabaseConnection:
 
     def commit(self):
         self.connection.commit()
-        print("Changes committed.")
 
     def close_connection(self):
         self.connection.close()

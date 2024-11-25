@@ -1,7 +1,6 @@
 -- create_TABLE IF NOT EXISTSs.sql
 CREATE TABLE IF NOT EXISTS entity (
-    id SERIAL PRIMARY KEY,
-    is_supplier BOOLEAN NOT NULL
+    id SERIAL PRIMARY KEY
 );
 
 CREATE TABLE IF NOT EXISTS credit_note (
@@ -120,13 +119,17 @@ CREATE TABLE IF NOT EXISTS stock_movement (
     product_id INTEGER,
     from_location_id INTEGER,
     to_location_id INTEGER,
+    supervised_by INTEGER,
     quantity INTEGER NOT NULL,
     FOREIGN KEY (product_id) REFERENCES product(id),
     FOREIGN KEY (from_location_id) REFERENCES location(id),
-    FOREIGN KEY (to_location_id) REFERENCES location(id)
+    FOREIGN KEY (to_location_id) REFERENCES location(id),
+    FOREIGN KEY (made_by) REFERENCES employee(id)
 );
 
 CREATE TABLE IF NOT EXISTS stock_movement_status (
     id SERIAL PRIMARY KEY,
-    state VARCHAR(50) NOT NULL
+    stock_movement_id INTEGER,
+    state VARCHAR(50) NOT NULL,
+    FOREIGN KEY (stock_movement_id) REFERENCES stock_movement(id)
 );

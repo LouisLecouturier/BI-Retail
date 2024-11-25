@@ -1,4 +1,4 @@
-from database_connection import DatabaseConnection
+from utils.database_connection import DatabaseConnection
 
 BRANDS = [
     "Hermes",
@@ -19,7 +19,6 @@ BRANDS = [
 
 
 def create_brands():
-
     db = DatabaseConnection()
 
     print("Creating brands...")
