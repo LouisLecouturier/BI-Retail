@@ -1,4 +1,5 @@
 import random
+import pandas as pd
 
 from faker import Faker
 
@@ -9,6 +10,8 @@ NUM_PRODUCTS = 200
 
 
 fake = Faker()
+
+data = pd.read_csv('product_info.csv')
 
 
 def create_products():
@@ -25,4 +28,4 @@ def create_products():
         db.commit()
         num += 1
 
-    print(f"{num} products created.")
+    print(f"✅ {num} products created.")

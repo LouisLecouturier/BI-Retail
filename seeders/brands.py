@@ -23,11 +23,11 @@ def create_brands():
 
     print("Creating brands...")
 
-    num = 0
+    # Convert brands to list of single-item tuples
+    brand_data = [(brand,) for brand in BRANDS]
 
-    for i in BRANDS:
-        db.execute(f"INSERT INTO brand (name) VALUES ('{i}');")
-        db.commit()
-        num += 1
+    # Execute batch insert
+    db.executemany("INSERT INTO brand (name) VALUES (%s);", brand_data)
 
-    print(f"{num} brands created.")
+    db.commit()
+    print(f"✅ {len(BRANDS)} brands created.")

@@ -26,6 +26,10 @@ class DatabaseConnection:
         cursor = self.connection.cursor()
         cursor.execute(query)
 
+    def executemany(self, query, data):
+        cursor = self.connection.cursor()
+        cursor.executemany(query, data)
+
     def commit(self):
         self.connection.commit()
 

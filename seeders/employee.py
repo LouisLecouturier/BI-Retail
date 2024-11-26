@@ -29,4 +29,4 @@ def create_employees():
         db.commit()
         num += 1
 
-    print(f"{num} employees created.")
+    print(f"✅ {num} employees created.")

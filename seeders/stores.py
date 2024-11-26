@@ -25,4 +25,4 @@ def create_stores():
         db.commit()
         num += 1
 
-    print(f"{num} stores created.")
+    print(f"✅ {num} stores created.")

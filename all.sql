@@ -3,6 +3,12 @@ CREATE TABLE IF NOT EXISTS entity (
     id SERIAL PRIMARY KEY
 );
 
+CREATE TABLE IF NOT EXISTS location (
+    id SERIAL PRIMARY KEY,
+    capacity INTEGER NOT NULL,
+    address TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS credit_note (
     id SERIAL PRIMARY KEY,
     amount INTEGER NOT NULL,
@@ -22,8 +28,10 @@ CREATE TABLE IF NOT EXISTS dispute (
 CREATE TABLE IF NOT EXISTS supplier (
     id SERIAL PRIMARY KEY,
     entity_id INTEGER,
+    location_id INTEGER,
     name TEXT NOT NULL,
-    FOREIGN KEY (entity_id) REFERENCES entity(id)
+    FOREIGN KEY (entity_id) REFERENCES entity(id),
+    FOREIGN KEY (location_id) REFERENCES location(id)
 );
 
 CREATE TABLE IF NOT EXISTS customer (
@@ -41,10 +49,6 @@ CREATE TABLE IF NOT EXISTS employee (
     FOREIGN KEY (supervised_by) REFERENCES employee(id)
 );
 
-CREATE TABLE IF NOT EXISTS location (
-    id SERIAL PRIMARY KEY,
-    address TEXT NOT NULL
-);
 
 CREATE TABLE IF NOT EXISTS warehouse (
     id SERIAL PRIMARY KEY,
@@ -89,10 +93,6 @@ CREATE TABLE IF NOT EXISTS purchase_order_line (
     FOREIGN KEY (product_id) REFERENCES product(id)
 );
 
-CREATE TABLE IF NOT EXISTS purchase_order_status (
-    id SERIAL PRIMARY KEY,
-    state VARCHAR(50) NOT NULL
-);
 
 CREATE TABLE IF NOT EXISTS sales_order (
     id SERIAL PRIMARY KEY,
@@ -119,17 +119,20 @@ CREATE TABLE IF NOT EXISTS stock_movement (
     product_id INTEGER,
     from_location_id INTEGER,
     to_location_id INTEGER,
+    order_id INTEGER,
     supervised_by INTEGER,
     quantity INTEGER NOT NULL,
     FOREIGN KEY (product_id) REFERENCES product(id),
     FOREIGN KEY (from_location_id) REFERENCES location(id),
     FOREIGN KEY (to_location_id) REFERENCES location(id),
-    FOREIGN KEY (made_by) REFERENCES employee(id)
+    FOREIGN KEY (order_id) REFERENCES purchase_order(id),
+    FOREIGN KEY (supervised_by) REFERENCES employee(id)
 );
 
 CREATE TABLE IF NOT EXISTS stock_movement_status (
     id SERIAL PRIMARY KEY,
     stock_movement_id INTEGER,
-    state VARCHAR(50) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    date DATE,
     FOREIGN KEY (stock_movement_id) REFERENCES stock_movement(id)
 );
