@@ -161,4 +161,4 @@ cython_debug/
 .idea/
 
 # all file in out/
-out/*
+postgres/out/*
