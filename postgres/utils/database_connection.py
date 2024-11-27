@@ -39,6 +39,6 @@ class DatabaseConnection:
 
     def clear_database(self):
         cursor = self.connection.cursor()
-        cursor.execute(open("clear.sql", "r").read())
+        cursor.execute(open("postgres/clear.sql", "r").read())
         self.connection.commit()
         print("Database cleared.")

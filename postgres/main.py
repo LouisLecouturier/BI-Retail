@@ -1,4 +1,3 @@
-
 from seeders.brands import create_brands
 from seeders.disputes_and_credits import create_disputes_and_credit
 from seeders.employee import create_employees
@@ -22,7 +21,7 @@ print("Connected.")
 db.clear_database()
 
 print("Executing query...")
-result = db.execute(open("all.sql", "r").read())
+result = db.execute(open("postgres/all.sql", "r").read())
 db.commit()
 print("DB schemas executed.")
 

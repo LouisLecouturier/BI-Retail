@@ -28,6 +28,6 @@ def create_brands():
 
     # Execute batch insert
     db.executemany("INSERT INTO brand (name) VALUES (%s);", brand_data)
-
     db.commit()
+    
     print(f"✅ {len(BRANDS)} brands created.")

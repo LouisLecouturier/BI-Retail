@@ -1,8 +1,6 @@
 import random
 
-import pandas as pd
 from faker import Faker
-
 from seeders.brands import BRANDS
 from utils.database_connection import DatabaseConnection
 
@@ -10,8 +8,6 @@ NUM_PRODUCTS = 200
 
 
 fake = Faker()
-
-data = pd.read_csv("product_info.csv")
 
 
 def create_products():
@@ -27,8 +23,7 @@ def create_products():
 
     # Insert all products in one operation
     db.executemany(
-        "INSERT INTO product (name, price, brand_id) VALUES (?, ?, ?);",
-        products
+        "INSERT INTO product (name, price, brand_id) VALUES (%s, %s, %s);", products
     )
     db.commit()
 
