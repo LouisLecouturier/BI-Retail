@@ -27,7 +27,7 @@ def create_stock_movements():
 
     query = """
     INSERT INTO stock_movement 
-    (from_location_id, to_location_id, order_id, product_id, supervised_by, quantity, date)
+    (from_location_id, to_location_id, order_id, product_id, employee_id, quantity, date)
     VALUES (%s, %s, %s, %s, %s, %s, %s)
     """
 

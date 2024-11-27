@@ -72,6 +72,7 @@ CREATE TABLE IF NOT EXISTS brand (
 CREATE TABLE IF NOT EXISTS product (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
+    price INTEGER NOT NULL,
     brand_id INTEGER,
     FOREIGN KEY (brand_id) REFERENCES brand(id)
 );
@@ -120,13 +121,13 @@ CREATE TABLE IF NOT EXISTS stock_movement (
     from_location_id INTEGER,
     to_location_id INTEGER,
     order_id INTEGER,
-    supervised_by INTEGER,
+    employee_id INTEGER,
     quantity INTEGER NOT NULL,
     FOREIGN KEY (product_id) REFERENCES product(id),
     FOREIGN KEY (from_location_id) REFERENCES location(id),
     FOREIGN KEY (to_location_id) REFERENCES location(id),
     FOREIGN KEY (order_id) REFERENCES purchase_order(id),
-    FOREIGN KEY (supervised_by) REFERENCES employee(id)
+    FOREIGN KEY (employee_id) REFERENCES employee(id)
 );
 
 CREATE TABLE IF NOT EXISTS stock_movement_status (
