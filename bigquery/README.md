@@ -34,7 +34,7 @@ Pour obtenir la clé de service :
     client = bigquery.Client.from_service_account_json('key.json')
     ```
 
-2. Utilisez les fonctions `import_table` et `export_table` pour importer et exporter des tables entre PostgreSQL et BigQuery.
+2. Utilisez les fonctions `import_table` et `export_table` pour importer et exporter des tables dans BigQuery.
 
 ### Exemple
 
