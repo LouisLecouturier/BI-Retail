@@ -17,7 +17,8 @@ Pour obtenir la clé de service :
 ### Notebook
 
 1. Copiez le notebook `template.ipynb`.
-2. Le notebook contient les fonctions `import_table` et `export_table`.
+2. Renomez le notebook copié comme vous le souhaitez (de preférence, le nom de la table que vous allez créer)
+3. Le notebook contient les fonctions `import_table` et `export_table`.
 
 ### Utilisation
 
