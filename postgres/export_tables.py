@@ -29,5 +29,4 @@ def export_table_to_csv(table_name, csv_file_path):
 # Exporter toutes les tables
 tables = get_all_tables()
 for table in tables:
-    export_table_to_csv(table, f"{table}.csv")for table in tables:
-    export_table_to_csv(table, f"{table}.csv")
+    export_table_to_csv(table, f"{table}.csv") 
