@@ -15,7 +15,7 @@ def create_stock_movement_statuses(
 ):
     db = DatabaseConnection()
 
-    print("Creating purchase order status...")
+    print("Creating stock movement order status...")
 
     num = 0
 
